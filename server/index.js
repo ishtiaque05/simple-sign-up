@@ -3,10 +3,10 @@ import path from 'path';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackConfig from '../webpack.config.dev'
-
+import webpackHotMiddleware from 'webpack-hot-middleware'
 let app = express();
-//
-app.user(webpackMiddleware(webpack(webpackConfig)))
+
+app.use(webpackMiddleware(webpack(webpackConfig)))
 app.get('/*',(req, res) => {
   res.sendFile(path.join(__dirname, './index.html'))
 });
